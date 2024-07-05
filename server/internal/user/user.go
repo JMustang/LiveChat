@@ -27,5 +27,5 @@ type CreateUserRes struct {
 }
 
 type Service interface {
-	CreateUser(c context.Context, req *CreateUserReq) (*CreateUserReq, error)
+	CreateUser(c context.Context, req *CreateUserReq) (*CreateUserRes, error)
 }
