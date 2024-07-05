@@ -2,6 +2,7 @@ package user
 
 import (
 	"context"
+	"server/util"
 	"strconv"
 	"time"
 )
@@ -19,11 +20,14 @@ func NewService(repository Repository) Service {
 
 }
 
-func (s *service) CreateUser(c context.Context, req *CreateUserReq) (*CreateUserReq, error) {
+func (s *service) CreateUser(c context.Context, req *CreateUserReq) (*CreateUserRes, error) {
 	ctx, cancel := context.WithTimeout(c, s.timeout)
 	defer cancel()
 
-	// TODO: Implement hash password
+	hashedPassword, err := util.HashPassword(req.Password)
+	if err != nil {
+		return nil, err
+	}
 
 	u := &User{
 		Username: req.Username,
