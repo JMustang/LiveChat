@@ -4,6 +4,7 @@ import (
 	"log"
 	"server/db"
 	"server/internal/user"
+	"server/router"
 )
 
 func main() {
@@ -15,5 +16,8 @@ func main() {
 	userRap := user.NewRepository(dbConn.GetDB())
 	userSvc := user.NewService(userRap)
 	userHandler := user.NewHandler(userSvc)
+
+	router.InitRouter(userHandler)
+	router.Start("0.0.0.0.:8080")
 
 }
