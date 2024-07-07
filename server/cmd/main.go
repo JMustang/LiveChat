@@ -18,6 +18,6 @@ func main() {
 	userHandler := user.NewHandler(userSvc)
 
 	router.InitRouter(userHandler)
-	router.Start("0.0.0.0.:8080")
+	router.Start("0.0.0.0:8080")
 
 }
