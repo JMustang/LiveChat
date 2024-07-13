@@ -73,10 +73,9 @@ func (h *Handler) JoinRoom(c *gin.Context) {
 		Username: username,
 	}
 
-	// TODO: Register a new client through the register channel
 	h.hub.Register <- cl
-	// TODO: Broadcast that message
 	h.hub.Broadcast <- m
-	// TODO: WriteMessage()
-	// TODO: readMessage()
+
+	go cl.writeMessage()
+	cl.readMessage(h.hub)
 }
