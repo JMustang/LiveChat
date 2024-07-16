@@ -23,3 +23,11 @@ migrate create -ext sql -dir db/migrations migration_name
 ```bash
 migrate -path db/migrations -database "postgresql://DB_USER:DB_PASSWORD@DB_HOST:DB_PORT/DB_NAME?sslmode=DB_SSLMODE" -verbose up
 ```
+
+---
+
+**Frontend**
+
+- React.js
+- Next.js
+- Tailwind
